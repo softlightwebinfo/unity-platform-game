@@ -18,11 +18,11 @@ public class GameManager : MonoBehaviour
     //En que estado del juego nos encontramos
     //En el inicio queremos que empieze en el menu principal
     public GameState currentGameState = GameState.menu;
-    public Canvas menuCanvas;
+    public Canvas menuCanvas, gameCanvas, gameOverCanvas;
 
     private void Awake()
-    {       
-        GameManager.sharedInstance = this;      
+    {
+        GameManager.sharedInstance = this;
     }
 
     private void Start()
@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetButtonDown("Pause"))
         {
             this.BackToMenu();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            this.ExitGame();
         }
     }
     //Metodo encargado de iniciar el juego
@@ -67,19 +72,36 @@ public class GameManager : MonoBehaviour
     {
         SetGameState(GameState.menu);
     }
+    // Metodo para salir del juego
+    public void ExitGame()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
+
     //Metodo encargado de cambiar el estado del juego
     void SetGameState(GameState newGameState)
     {
-        if(newGameState == GameState.menu)
+        if (newGameState == GameState.menu)
         {
             this.menuCanvas.enabled = true;
-        } else if(newGameState == GameState.inGame)
+            this.gameCanvas.enabled = false;
+            this.gameOverCanvas.enabled = false;
+        }
+        else if (newGameState == GameState.inGame)
         {
             this.menuCanvas.enabled = false;
+            this.gameCanvas.enabled = true;
+            this.gameOverCanvas.enabled = false;
         }
-        else if(newGameState == GameState.gameOver)
+        else if (newGameState == GameState.gameOver)
         {
-
+            this.menuCanvas.enabled = false;
+            this.gameCanvas.enabled = false;
+            this.gameOverCanvas.enabled = true;
         }
         this.currentGameState = newGameState;
     }

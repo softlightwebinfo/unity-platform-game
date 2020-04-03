@@ -1,11 +1,12 @@
 ﻿<Properties StartupConfiguration="{0A7AB932-EE8B-4A00-337F-1721F48D9061}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Collectable.cs">
     <Files>
-      <File FileName="Assets/Scripts/LevelGenerator.cs" Line="53" Column="39" />
-      <File FileName="Assets/Scripts/LeaveZone.cs" Line="10" Column="64" />
+      <File FileName="Assets/Scripts/LevelGenerator.cs" Line="30" Column="1" />
+      <File FileName="Assets/Scripts/LeaveZone.cs" Line="19" Column="6" />
       <File FileName="Assets/Scripts/PlayerController.cs" Line="9" Column="1" />
       <File FileName="Assets/Scripts/CameraFollow.cs" Line="15" Column="1" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="48" Column="16" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="87" Column="6" />
+      <File FileName="Assets/Scripts/Collectable.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,7 +14,7 @@
           <Node name="SuperJBross" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="GameManager.cs" selected="True" />
+                <Node name="Collectable.cs" selected="True" />
               </Node>
             </Node>
           </Node>
