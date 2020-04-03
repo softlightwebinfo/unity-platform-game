@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     //En que estado del juego nos encontramos
     //En el inicio queremos que empieze en el menu principal
     public GameState currentGameState = GameState.menu;
+    public Canvas menuCanvas;
 
     private void Awake()
     {       
@@ -71,10 +72,10 @@ public class GameManager : MonoBehaviour
     {
         if(newGameState == GameState.menu)
         {
-
+            this.menuCanvas.enabled = true;
         } else if(newGameState == GameState.inGame)
         {
-
+            this.menuCanvas.enabled = false;
         }
         else if(newGameState == GameState.gameOver)
         {
