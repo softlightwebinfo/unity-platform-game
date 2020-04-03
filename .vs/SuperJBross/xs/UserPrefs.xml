@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{0A7AB932-EE8B-4A00-337F-1721F48D9061}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LevelGenerator.cs">
+    <Files>
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="24" Column="10" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="24" Column="49" />
+      <File FileName="Assets/Scripts/KillTrigger.cs" Line="16" Column="1" />
+      <File FileName="Assets/Scripts/LevelBlock.cs" Line="8" Column="32" />
+      <File FileName="Assets/Scripts/LevelGenerator.cs" Line="7" Column="4" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SuperJBross" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="LevelGenerator.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4e7270ed-1fd0-4d1a-a151-db07b2b91772" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
