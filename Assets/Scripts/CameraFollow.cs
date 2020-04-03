@@ -14,6 +14,15 @@ public class CameraFollow : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
+   public void ResetCameraPosition()
+    {
+        Vector3 point = GetComponent<Camera>().WorldToViewportPoint(target.position);
+        Vector3 delta = target.position - GetComponent<Camera>().ViewportToWorldPoint(new Vector3(this.offset.x, this.offset.y, point.z));
+        Vector3 destination = point + delta;
+        destination = new Vector3(this.target.position.x, this.offset.y, this.offset.z);
+        this.transform.position = destination;
+    }
+
     // Update is called once per frame
     void Update()
     {        

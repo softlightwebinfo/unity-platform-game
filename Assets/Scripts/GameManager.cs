@@ -44,6 +44,14 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         this.SetGameState(GameState.inGame);
+        GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+        CameraFollow cameraFollow = camera.GetComponent<CameraFollow>();
+        cameraFollow.ResetCameraPosition();
+        if (PlayerController.sharedInstance.transform.position.x > 10)
+        {
+            LevelGenerator.sharedInstance.RemoveAllTheBlocks();
+            LevelGenerator.sharedInstance.GenerateInitialBlocks();
+        }
         PlayerController.sharedInstance.StartGame();
     }
 

@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 2472960900673252346}
   - component: {fileID: 256738240462325140}
   - component: {fileID: 3960766745883789517}
+  - component: {fileID: 3175628473483962049}
   m_Layer: 0
   m_Name: KillZone
   m_TagString: Untagged
@@ -347,7 +348,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 10.066231, y: 0}
+  m_Offset: {x: 25.722507, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -358,7 +359,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 21.173733, y: 1}
+  m_Size: {x: 52.486282, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &3960766745883789517
 MonoBehaviour:
@@ -372,6 +373,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74eb7e226c9bf4c1aa2c98d476dbdd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!68 &3175628473483962049
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3646338874490958903}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 4.919151, y: 1.6334143}
+  - {x: 7.7072363, y: 4.020711}
+  - {x: 10.132207, y: 5.9021297}
+  - {x: 15.090702, y: 6.297489}
+  - {x: 18.26801, y: 1.6495619}
+  - {x: 25.97844, y: 1.1091375}
+  - {x: 32.321083, y: 1.1743441}
+  - {x: 36.63144, y: 3.394085}
+  - {x: 43.836334, y: 1.1938343}
+  - {x: 47.164898, y: 1.5077662}
 --- !u!1 &7265121316007077271
 GameObject:
   m_ObjectHideFlags: 0
