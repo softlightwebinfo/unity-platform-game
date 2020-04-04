@@ -35,8 +35,18 @@ public class PlayerController : MonoBehaviour
         this.maxHealthPoints = 150.0f;
         this.maxManaPoints = 50.0f;
         this.experience = 0;
-    }
 
+        StartCoroutine("TirePlayer");
+    }
+    IEnumerator TirePlayer()
+    {
+        while (this.healthPoints > 0)
+        {
+            this.healthPoints--;
+            yield return new WaitForSeconds(1.0f);
+        }
+        yield return null;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -62,7 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         if (this.InGame())
         {
-            float currentSpeed = (this.runningSpeed - 0.5f) * this.healthPoints / 100.0f;
+            float currentSpeed = (this.runningSpeed - 1.5f) * this.healthPoints / 100.0f;
             //this.Running();
             if (rigibody.velocity.x < currentSpeed)
             {
