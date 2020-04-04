@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigibody;
     public Animator animator;
     private Vector3 startPosition;
+    private float healthPoints, manaPoints;
+    private float maxHealthPoints, maxManaPoints;
+    private int experience;
 
     void Awake()
     {
@@ -26,6 +29,12 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isAlive", true);
         animator.SetBool("isGrounded", true);
         this.transform.position = this.startPosition;
+
+        this.healthPoints = 100.0f;
+        this.manaPoints = 20.0f;
+        this.maxHealthPoints = 150.0f;
+        this.maxManaPoints = 50.0f;
+        this.experience = 0;
     }
 
     // Update is called once per frame
@@ -35,7 +44,12 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetMouseButtonDown(0))
             {
-                this.Jump();
+                this.Jump(false);
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                this.Jump(true);
             }
             animator.SetBool("isGrounded", this.IsTouchingTheGround());
         }
@@ -48,10 +62,11 @@ public class PlayerController : MonoBehaviour
     {
         if (this.InGame())
         {
+            float currentSpeed = (this.runningSpeed - 0.5f) * this.healthPoints / 100.0f;
             //this.Running();
-            if (rigibody.velocity.x < this.runningSpeed)
+            if (rigibody.velocity.x < currentSpeed)
             {
-                rigibody.velocity = new Vector2(this.runningSpeed, rigibody.velocity.y);
+                rigibody.velocity = new Vector2(currentSpeed, rigibody.velocity.y);
             }
         }
     }
@@ -74,11 +89,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Jump()
+    void Jump(bool isSuperJump)
     {
         if (this.IsTouchingTheGround())
         {
-            rigibody.AddForce(Vector2.up * this.jumpForce, ForceMode2D.Impulse);
+            if (isSuperJump && this.manaPoints >= 5)
+            {
+                rigibody.AddForce(Vector2.up * this.jumpForce * 1.2f, ForceMode2D.Impulse);
+                this.manaPoints -= 5;
+            }
+            else
+            {
+                rigibody.AddForce(Vector2.up * this.jumpForce, ForceMode2D.Impulse);
+            }
         }
     }
 
@@ -107,5 +130,23 @@ public class PlayerController : MonoBehaviour
     {
         // Optional -> this.transform.position.x - this.startPosition.x;
         return Vector2.Distance(new Vector2(this.startPosition.x, 0), new Vector2(this.transform.position.x, 0));
+    }
+
+    public void CollectHealth(float points)
+    {
+        this.healthPoints += points;
+        if (this.healthPoints >= this.maxHealthPoints)
+        {
+            this.healthPoints = this.maxHealthPoints;
+        }
+    }
+
+    public void CollectMana(float points)
+    {
+        this.manaPoints += points;
+        if (this.manaPoints >= this.maxManaPoints)
+        {
+            this.manaPoints = this.maxManaPoints;
+        }
     }
 }

@@ -2,8 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum CollectableType
+{
+    healthPotion,
+    manaPotion,
+    money
+}
+
 public class Collectable : MonoBehaviour
 {
+    public CollectableType type = CollectableType.money;
     // Attr para saber si la moneda ha sido recogida o no
     bool isCollected = false;
     public int value = 0;
@@ -20,17 +29,29 @@ public class Collectable : MonoBehaviour
 
     //Metodo para desactivar la moneda y su collider
     void Hide()
-    {       
-        this.GetComponent<SpriteRenderer>().enabled = false;       
-        this.GetComponent<CircleCollider2D>().enabled = false;     
+    {
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        this.GetComponent<CircleCollider2D>().enabled = false;
     }
 
     //Metodo para recolectar la moneda
     void Collect()
-    {        
-        this.isCollected = true;        
+    {
+        this.isCollected = true;
         this.Hide();
-        GameManager.sharedInstance.CollectObject(this.value);
+        switch (this.type)
+        {
+            case CollectableType.money:
+                GameManager.sharedInstance.CollectObject(this.value);
+                break;
+            case CollectableType.manaPotion:
+                PlayerController.sharedInstance.CollectMana(this.value);
+                break;
+            case CollectableType.healthPotion:
+                PlayerController.sharedInstance.CollectHealth(this.value);
+                break;
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D otherCollider)
