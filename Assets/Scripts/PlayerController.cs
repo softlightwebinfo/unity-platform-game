@@ -182,4 +182,22 @@ public class PlayerController : MonoBehaviour
             this.manaPoints = this.maxManaPoints;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D otherCollider)
+    {
+        if (otherCollider.tag == "Enemy")
+        {
+            this.healthPoints -= 25;
+        }
+
+        if (otherCollider.tag == "Rock")
+        {
+            this.healthPoints -= 5;
+        }
+
+        if (GameManager.sharedInstance.currentGameState == GameState.inGame && this.healthPoints <= 0)
+        {
+            this.Kill();
+        }
+    }
 }
