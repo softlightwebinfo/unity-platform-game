@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9016196029787844200}
   - component: {fileID: 4189970133249352128}
   - component: {fileID: 106851539514805057}
-  - component: {fileID: 3231120761919833997}
+  - component: {fileID: 1496371221109923246}
   m_Layer: 0
   m_Name: HealingPotion
   m_TagString: Collectable
@@ -95,8 +95,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   value: 10
---- !u!70 &3231120761919833997
-CapsuleCollider2D:
+--- !u!58 &1496371221109923246
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -108,6 +108,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.38193125, y: -0.3819294}
-  m_Size: {x: 1.4640237, y: 1.464026}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.28

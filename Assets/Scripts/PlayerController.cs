@@ -13,8 +13,13 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     private Vector3 startPosition;
     private float healthPoints, manaPoints;
-    private float maxHealthPoints, maxManaPoints;
-    private int experience;
+    private float maxHealthPoints = 150.0f, maxManaPoints = 50.0f;
+    private float experience = 0.0f;
+
+    public const float INITIAL_HEALTH = 100, INITIAL_MANA = 20;
+    public const float MIN_HEALTH = 10.0f, MIN_MANA = 0.0f;
+    public const float MIN_SPEED = 2.5f, HEALTH_TIME_DECREASE = 1.0f;
+    public const float SUPERJUMP_FORCE = 1.2f, SUPERJUMP_COST = 3.0f;
 
     void Awake()
     {
@@ -23,6 +28,26 @@ public class PlayerController : MonoBehaviour
         this.startPosition = this.transform.position;
 
     }
+
+    public float GetMaxMana()
+    {
+        return this.maxManaPoints;
+    }
+
+    public float GetMana()
+    {
+        return this.manaPoints;
+    }
+
+    public float GetHealth()
+    {
+        return this.healthPoints;
+    }
+
+    public float GetMaxHealth()
+    {
+        return this.maxHealthPoints;
+    }
     // Start is called before the first frame update
     public void StartGame()
     {
@@ -30,20 +55,17 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isGrounded", true);
         this.transform.position = this.startPosition;
 
-        this.healthPoints = 100.0f;
-        this.manaPoints = 20.0f;
-        this.maxHealthPoints = 150.0f;
-        this.maxManaPoints = 50.0f;
-        this.experience = 0;
+        this.healthPoints = INITIAL_HEALTH;
+        this.manaPoints = INITIAL_MANA;
 
         StartCoroutine("TirePlayer");
     }
     IEnumerator TirePlayer()
     {
-        while (this.healthPoints > 0)
+        while (this.healthPoints > MIN_HEALTH)
         {
             this.healthPoints--;
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(HEALTH_TIME_DECREASE);
         }
         yield return null;
     }
@@ -72,7 +94,7 @@ public class PlayerController : MonoBehaviour
     {
         if (this.InGame())
         {
-            float currentSpeed = (this.runningSpeed - 1.5f) * this.healthPoints / 100.0f;
+            float currentSpeed = (this.runningSpeed - MIN_SPEED) * this.healthPoints / 100.0f;
             //this.Running();
             if (rigibody.velocity.x < currentSpeed)
             {
@@ -103,10 +125,10 @@ public class PlayerController : MonoBehaviour
     {
         if (this.IsTouchingTheGround())
         {
-            if (isSuperJump && this.manaPoints >= 5)
+            if (isSuperJump && this.manaPoints >= SUPERJUMP_COST)
             {
-                rigibody.AddForce(Vector2.up * this.jumpForce * 1.2f, ForceMode2D.Impulse);
-                this.manaPoints -= 5;
+                rigibody.AddForce(Vector2.up * this.jumpForce * SUPERJUMP_FORCE, ForceMode2D.Impulse);
+                this.manaPoints -= SUPERJUMP_COST;
             }
             else
             {
@@ -134,6 +156,7 @@ public class PlayerController : MonoBehaviour
         {
             PlayerPrefs.SetFloat("maxscore", this.GetDistance());
         }
+        StopCoroutine("TirePlayer");
     }
 
     public float GetDistance()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5125064190803339717}
   - component: {fileID: 6123269926976428796}
   - component: {fileID: 7345698496002642662}
-  - component: {fileID: 7847715908380906385}
+  - component: {fileID: 3624394288966776584}
   m_Layer: 0
   m_Name: ManaPotion
   m_TagString: Collectable
@@ -95,8 +95,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   value: 10
---- !u!70 &7847715908380906385
-CapsuleCollider2D:
+--- !u!58 &3624394288966776584
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -108,6 +108,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2656908, y: -0.43174827}
-  m_Size: {x: 1.6300812, y: 1.6300814}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.28

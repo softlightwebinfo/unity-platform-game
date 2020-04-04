@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         {
             this.BackToMenu();
         }
-        
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             this.ExitGame();
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
             LevelGenerator.sharedInstance.RemoveAllTheBlocks();
             LevelGenerator.sharedInstance.GenerateInitialBlocks();
         }
-        collectedObjects = 0;
+        this.collectedObjects = 0;
         PlayerController.sharedInstance.StartGame();
     }
 
@@ -77,11 +77,11 @@ public class GameManager : MonoBehaviour
     // Metodo para salir del juego
     public void ExitGame()
     {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
-        #endif
+#endif
     }
 
     //Metodo encargado de cambiar el estado del juego

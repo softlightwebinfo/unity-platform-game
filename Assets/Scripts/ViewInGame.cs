@@ -22,7 +22,10 @@ public class ViewInGame : MonoBehaviour
         {
             float travelledDistance = PlayerController.sharedInstance.GetDistance();
             this.scoreLabel.text = "Score\n" + travelledDistance.ToString("f2");
-            this.maxScoreLabel.text = "Max Score\n" + PlayerPrefs.GetFloat("maxscore", 0.0f).ToString("f2");
+            if (this.maxScoreLabel)
+            {
+                this.maxScoreLabel.text = "Max Score\n" + PlayerPrefs.GetFloat("maxscore", 0.0f).ToString("f2");
+            }
         }
     }
 }

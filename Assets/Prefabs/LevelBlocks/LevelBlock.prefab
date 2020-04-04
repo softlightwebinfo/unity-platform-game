@@ -944,6 +944,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ManaPotion
       objectReference: {fileID: 0}
+    - target: {fileID: 7847715908380906385, guid: f32c8b5ba3ede43189f9a618a4dd5652,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f32c8b5ba3ede43189f9a618a4dd5652, type: 3}
 --- !u!4 &1062053748258996771 stripped
