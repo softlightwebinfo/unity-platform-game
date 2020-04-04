@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     //En el inicio queremos que empieze en el menu principal
     public GameState currentGameState = GameState.menu;
     public Canvas menuCanvas, gameCanvas, gameOverCanvas;
+    public int collectedObjects = 0;
 
     private void Awake()
     {
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour
             LevelGenerator.sharedInstance.RemoveAllTheBlocks();
             LevelGenerator.sharedInstance.GenerateInitialBlocks();
         }
+        collectedObjects = 0;
         PlayerController.sharedInstance.StartGame();
     }
 
@@ -104,5 +106,10 @@ public class GameManager : MonoBehaviour
             this.gameOverCanvas.enabled = true;
         }
         this.currentGameState = newGameState;
+    }
+
+    public void CollectObject(int objectValue)
+    {
+        this.collectedObjects += objectValue;
     }
 }

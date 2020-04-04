@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     }
     // Start is called before the first frame update
-   public void StartGame()
+    public void StartGame()
     {
         animator.SetBool("isAlive", true);
         animator.SetBool("isGrounded", true);
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         return GameManager.sharedInstance.currentGameState == GameState.inGame;
     }
     void FixedUpdate()
-    {        
+    {
         if (this.InGame())
         {
             //this.Running();
@@ -95,5 +95,11 @@ public class PlayerController : MonoBehaviour
     {
         GameManager.sharedInstance.GameOver();
         this.animator.SetBool("isAlive", false);
+    }
+
+    public float GetDistance()
+    {
+        // Optional -> this.transform.position.x - this.startPosition.x;
+        return Vector2.Distance(new Vector2(this.startPosition.x, 0), new Vector2(this.transform.position.x, 0));
     }
 }
