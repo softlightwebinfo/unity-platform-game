@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Collectable.cs" />
+    <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\KillTrigger.cs" />
     <Compile Include="Assets\Scripts\LeaveZone.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Assets\Scripts\LevelGenerator.cs" />
     <Compile Include="Assets\Scripts\PlayerBar.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\TriggerMovement.cs" />
     <Compile Include="Assets\Scripts\ViewInGame.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Users/rafaelgonzalezmunoz/Developer/Unity/SuperJBross/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
