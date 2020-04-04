@@ -41,8 +41,12 @@ public class Collectable : MonoBehaviour
     {
         this.isCollected = true;
         this.Hide();
+        AudioSource audio = GetComponent<AudioSource>();
 
-        GetComponent<AudioSource>().PlayOneShot(this.collectSound);
+        if (audio && this.collectSound)
+        {
+            audio.PlayOneShot(this.collectSound);
+        }
 
         switch (this.type)
         {
