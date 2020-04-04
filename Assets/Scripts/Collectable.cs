@@ -16,6 +16,8 @@ public class Collectable : MonoBehaviour
     // Attr para saber si la moneda ha sido recogida o no
     bool isCollected = false;
     public int value = 0;
+    public AudioClip collectSound;
+
     //Metodo para activar la moneda y su collider
     void Show()
     {
@@ -39,6 +41,9 @@ public class Collectable : MonoBehaviour
     {
         this.isCollected = true;
         this.Hide();
+
+        GetComponent<AudioSource>().PlayOneShot(this.collectSound);
+
         switch (this.type)
         {
             case CollectableType.money:

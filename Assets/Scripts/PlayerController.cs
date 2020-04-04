@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private float healthPoints, manaPoints;
     private float maxHealthPoints = 150.0f, maxManaPoints = 50.0f;
     private float experience = 0.0f;
-
+    public AudioClip DeathSound;
     public const float INITIAL_HEALTH = 100, INITIAL_MANA = 20;
     public const float MIN_HEALTH = 10.0f, MIN_MANA = 0.0f;
     public const float MIN_SPEED = 2.5f, HEALTH_TIME_DECREASE = 1.0f;
@@ -150,6 +150,7 @@ public class PlayerController : MonoBehaviour
     {
         GameManager.sharedInstance.GameOver();
         this.animator.SetBool("isAlive", false);
+        GetComponent<AudioSource>().PlayOneShot(this.DeathSound);
 
         float currentMaxScore = PlayerPrefs.GetFloat("maxscore", 0.0f);
         if (currentMaxScore < this.GetDistance())
